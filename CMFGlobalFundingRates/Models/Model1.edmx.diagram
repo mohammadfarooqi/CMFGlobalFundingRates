@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1cb64281729848fbbf13450b53501a0d" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.CMF_Toronto" Width="1.5" PointX="0.5" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.CMF_Contacts" Width="1.5" PointX="0.5" PointY="4.5" />
+        <EntityTypeShape EntityType="Model1.CMF_NewYork" Width="1.5" PointX="2.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.CMF_London_1" Width="1.5" PointX="4.125" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.CMF_London_2" Width="1.5" PointX="6" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.CMF_Singapore" Width="1.5" PointX="7.875" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.CMF_Table_LastModifiedBy" Width="1.5" PointX="9.75" PointY="1.125" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
