@@ -19,7 +19,7 @@ namespace CMFGlobalFundingRates.Models
         public string Product { get; set; }
         public string ON_Repo { get; set; }
         public string OneMonth_Fixed { get; set; }
-        public string ThreeMonth_Fied { get; set; }
+        public string ThreeMonth_Fixed { get; set; }
         public string SixMonth_Fixed { get; set; }
         public string TwelveMonth_Fixed { get; set; }
     }

@@ -4,107 +4,107 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="Model1StoreContainer">
-    <EntitySet Name="CMF_Toronto" EntityType="Model1.Store.CMF_Toronto" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CMF_Contacts" EntityType="Model1.Store.CMF_Contacts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CMF_NewYork" EntityType="Model1.Store.CMF_NewYork" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CMF_London_1" EntityType="Model1.Store.CMF_London_1" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CMF_London_2" EntityType="Model1.Store.CMF_London_2" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CMF_Singapore" EntityType="Model1.Store.CMF_Singapore" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CMF_Table_LastModifiedBy" EntityType="Model1.Store.CMF_Table_LastModifiedBy" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="CMF_Toronto">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ON_Repo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TwoMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TwelveMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CMF_Contacts">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CMF_NewYork">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ON_Repo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_Floating" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_Floating" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SixMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SixMonth_Floating" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TwelveMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TwelveMonth_Floating" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CMF_London_1">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ON_Repo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_Fied" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SixMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TwelveMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CMF_London_2">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ON" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_Indexed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_FixedValue" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_Indexed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_FixedValue" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CMF_Singapore">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ON_Repo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OneMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TwoMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FourMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FiveMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SixMonth_Fixed" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CMF_Table_LastModifiedBy">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TableName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CMF_Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMF_London_1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Product" Type="nvarchar(max)" />
+          <Property Name="ON_Repo" Type="nvarchar(max)" />
+          <Property Name="OneMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="SixMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="TwelveMonth_Fixed" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CMF_London_2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Product" Type="nvarchar(max)" />
+          <Property Name="ON" Type="nvarchar(max)" />
+          <Property Name="OneMonth_Indexed" Type="nvarchar(max)" />
+          <Property Name="OneMonth_FixedValue" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_Indexed" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_FixedValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CMF_NewYork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Product" Type="nvarchar(max)" />
+          <Property Name="ON_Repo" Type="nvarchar(max)" />
+          <Property Name="OneMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="OneMonth_Floating" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_Floating" Type="nvarchar(max)" />
+          <Property Name="SixMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="SixMonth_Floating" Type="nvarchar(max)" />
+          <Property Name="TwelveMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="TwelveMonth_Floating" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CMF_Singapore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Product" Type="nvarchar(max)" />
+          <Property Name="ON_Repo" Type="nvarchar(max)" />
+          <Property Name="OneMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="TwoMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="FourMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="FiveMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="SixMonth_Fixed" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CMF_Table_LastModifiedBy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CMF_Toronto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Product" Type="nvarchar(max)" />
+          <Property Name="ON_Repo" Type="nvarchar(max)" />
+          <Property Name="OneMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="TwoMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="ThreeMonth_Fixed" Type="nvarchar(max)" />
+          <Property Name="TwelveMonth_Fixed" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Model1StoreContainer">
+          <EntitySet Name="CMF_Contacts" EntityType="Self.CMF_Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMF_London_1" EntityType="Self.CMF_London_1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMF_London_2" EntityType="Self.CMF_London_2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMF_NewYork" EntityType="Self.CMF_NewYork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMF_Singapore" EntityType="Self.CMF_Singapore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMF_Table_LastModifiedBy" EntityType="Self.CMF_Table_LastModifiedBy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMF_Toronto" EntityType="Self.CMF_Toronto" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -122,90 +122,90 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Currency" Type="String" Nullable="false" />
-          <Property Name="Product" Type="String" Nullable="false" />
-          <Property Name="ON_Repo" Type="String" Nullable="false" />
-          <Property Name="OneMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="TwoMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="TwelveMonth_Fixed" Type="String" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ON_Repo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TwoMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TwelveMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CMF_Contacts">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Phone" Type="String" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" />
-          <Property Name="Location" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CMF_NewYork">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Currency" Type="String" Nullable="false" />
-          <Property Name="Product" Type="String" Nullable="false" />
-          <Property Name="ON_Repo" Type="String" Nullable="false" />
-          <Property Name="OneMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="OneMonth_Floating" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_Floating" Type="String" Nullable="false" />
-          <Property Name="SixMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="SixMonth_Floating" Type="String" Nullable="false" />
-          <Property Name="TwelveMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="TwelveMonth_Floating" Type="String" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ON_Repo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_Floating" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_Floating" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SixMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SixMonth_Floating" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TwelveMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TwelveMonth_Floating" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CMF_London_1">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Currency" Type="String" Nullable="false" />
-          <Property Name="Product" Type="String" Nullable="false" />
-          <Property Name="ON_Repo" Type="String" Nullable="false" />
-          <Property Name="OneMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_Fied" Type="String" Nullable="false" />
-          <Property Name="SixMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="TwelveMonth_Fixed" Type="String" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ON_Repo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_Fixed" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SixMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TwelveMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CMF_London_2">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Currency" Type="String" Nullable="false" />
-          <Property Name="Product" Type="String" Nullable="false" />
-          <Property Name="ON" Type="String" Nullable="false" />
-          <Property Name="OneMonth_Indexed" Type="String" Nullable="false" />
-          <Property Name="OneMonth_FixedValue" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_Indexed" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_FixedValue" Type="String" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ON" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_Indexed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_FixedValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_Indexed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_FixedValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CMF_Singapore">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Currency" Type="String" Nullable="false" />
-          <Property Name="Product" Type="String" Nullable="false" />
-          <Property Name="ON_Repo" Type="String" Nullable="false" />
-          <Property Name="OneMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="TwoMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="ThreeMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="FourMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="FiveMonth_Fixed" Type="String" Nullable="false" />
-          <Property Name="SixMonth_Fixed" Type="String" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ON_Repo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OneMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TwoMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ThreeMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FourMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FiveMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SixMonth_Fixed" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CMF_Table_LastModifiedBy">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TableName" Type="String" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" />
-          <Property Name="DateTime" Type="String" Nullable="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -259,12 +259,12 @@
     <EntitySetMapping Name="CMF_London_1">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.CMF_London_1)">
         <MappingFragment StoreEntitySet="CMF_London_1">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ThreeMonth_Fixed" ColumnName="ThreeMonth_Fixed" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Currency" ColumnName="Currency" />
           <ScalarProperty Name="Product" ColumnName="Product" />
           <ScalarProperty Name="ON_Repo" ColumnName="ON_Repo" />
           <ScalarProperty Name="OneMonth_Fixed" ColumnName="OneMonth_Fixed" />
-          <ScalarProperty Name="ThreeMonth_Fied" ColumnName="ThreeMonth_Fied" />
           <ScalarProperty Name="SixMonth_Fixed" ColumnName="SixMonth_Fixed" />
           <ScalarProperty Name="TwelveMonth_Fixed" ColumnName="TwelveMonth_Fixed" />
         </MappingFragment>
@@ -326,6 +326,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
         <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
