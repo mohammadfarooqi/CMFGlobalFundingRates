@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    //load up json data from server using web api
     initializeTorontoTable('api/CMF_TorontoData');
     initializeTorontoTableContacts('api/CMF_ContactsData/Toronto');
 
@@ -11,6 +12,12 @@
 
     initializeSingaporeTable('api/CMF_SingaporeData');
     initializeSingaporeTableContacts('api/CMF_ContactsData/Singapore');
+
+    //var updates = $.connection.liveUpdates;
+    
+    //$.connection.hub.start().done(function () {
+
+    //});
 });
 
 function initializeTorontoTable(path) {
@@ -19,6 +26,8 @@ function initializeTorontoTable(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_toronto").remove();
 
               var tableBody = $("#CMF_Toronto_TableBody");
 
@@ -48,7 +57,7 @@ function initializeTorontoTable(path) {
                   var td8 = $("<td class='text-center'></td>");
                   td8[0].innerHTML = item.twelveMonth_Fixed;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_toronto'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
@@ -60,6 +69,10 @@ function initializeTorontoTable(path) {
                   
                   tableBody.append(tr);
               });
+
+              $('#CMF_Toronto_TableBody').editableTableWidget({
+                  disableClass: "no-change-text"
+              });
           });
 }
 
@@ -69,6 +82,9 @@ function initializeTorontoTableContacts(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_contacts_toronto").remove();
+
               var tableBody = $("#CMF_Toronto_FooterContacts");
 
               $.each(data, function (key, item) {
@@ -84,13 +100,17 @@ function initializeTorontoTableContacts(path) {
                   var td4 = $("<td colspan='3'></td>");
                   td4[0].innerHTML = item.email;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_contacts_toronto'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
                   tr.append(td4);
 
                   tableBody.append(tr);
+              });
+
+              $('#CMF_Toronto_FooterContacts').editableTableWidget({
+                  disableClass: "no-change-text"
               });
           });
 }
@@ -101,6 +121,8 @@ function initializeNewYorkTable(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_newyork").remove();
 
               var tableBody = $("#CMF_NewYork_TableBody");
 
@@ -142,7 +164,7 @@ function initializeNewYorkTable(path) {
                   var td12 = $("<td class='text-center'></td>");
                   td12[0].innerHTML = item.twelveMonth_Floating;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_newyork'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
@@ -158,6 +180,10 @@ function initializeNewYorkTable(path) {
 
                   tableBody.append(tr);
               });
+
+              $('#CMF_NewYork_TableBody').editableTableWidget({
+                  disableClass: "no-change-text"
+              });
           });
 }
 
@@ -167,6 +193,9 @@ function initializeNewYorkTableContacts(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_contacts_newyork").remove();
+
               var tableBody = $("#CMF_NewYork_FooterContacts");
 
               $.each(data, function (key, item) {
@@ -182,13 +211,17 @@ function initializeNewYorkTableContacts(path) {
                   var td4 = $("<td colspan='6'></td>");
                   td4[0].innerHTML = item.email;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_contacts_newyork'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
                   tr.append(td4);
 
                   tableBody.append(tr);
+              });
+
+              $('#CMF_NewYork_FooterContacts').editableTableWidget({
+                  disableClass: "no-change-text"
               });
           });
 }
@@ -199,6 +232,8 @@ function initializeLondon1Table(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_london1").remove();
 
               var tableBody = $("#CMF_London1_TableBody");
 
@@ -228,7 +263,7 @@ function initializeLondon1Table(path) {
                   var td8 = $("<td class='text-center'></td>");
                   td8[0].innerHTML = item.twelveMonth_Fixed;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_london1'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
@@ -240,6 +275,10 @@ function initializeLondon1Table(path) {
 
                   tableBody.append(tr);
               });
+
+              $('#CMF_London1_TableBody').editableTableWidget({
+                  disableClass: "no-change-text"
+              });
           });
 }
 
@@ -249,6 +288,9 @@ function initializeLondon2Table(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_london2").remove();
+
               var tableBody = $("#CMF_London2_TableBody");
 
               $.each(data, function (key, item) {
@@ -277,7 +319,7 @@ function initializeLondon2Table(path) {
                   var td8 = $("<td class='text-center'></td>");
                   td8[0].innerHTML = item.threeMonth_FixedValue;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_london2'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
@@ -289,6 +331,10 @@ function initializeLondon2Table(path) {
                   
                   tableBody.append(tr);
               });
+
+              $('#CMF_London2_TableBody').editableTableWidget({
+                  disableClass: "no-change-text"
+              });
           });
 }
 
@@ -298,6 +344,9 @@ function initializeLondonTableContacts(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_contacts_london").remove();
+
               var tableBody = $("#CMF_London_FooterContacts");
 
               $.each(data, function (key, item) {
@@ -313,13 +362,17 @@ function initializeLondonTableContacts(path) {
                   var td4 = $("<td colspan='7'></td>");
                   td4[0].innerHTML = item.email;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_contacts_london'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
                   tr.append(td4);
 
                   tableBody.append(tr);
+              });
+
+              $('#CMF_London_FooterContacts').editableTableWidget({
+                  disableClass: "no-change-text"
               });
           });
 }
@@ -330,6 +383,8 @@ function initializeSingaporeTable(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_singapore").remove();
 
               var tableBody = $("#CMF_Singapore_TableBody");
 
@@ -365,7 +420,7 @@ function initializeSingaporeTable(path) {
                   var td10 = $("<td class='text-center'></td>");
                   td10[0].innerHTML = item.sixMonth_Fixed;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_singapore'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
@@ -379,6 +434,10 @@ function initializeSingaporeTable(path) {
 
                   tableBody.append(tr);
               });
+
+              $('#CMF_Singapore_TableBody').editableTableWidget({
+                  disableClass: "no-change-text"
+              });
           });
 }
 
@@ -388,6 +447,9 @@ function initializeSingaporeTableContacts(path) {
     $.getJSON(uri)
           .done(function (data) {
               // On success, 'data' contains a list.
+
+              $(".live_update_contacts_singapore").remove();
+
               var tableBody = $("#CMF_Singapore_FooterContacts");
 
               $.each(data, function (key, item) {
@@ -403,13 +465,17 @@ function initializeSingaporeTableContacts(path) {
                   var td4 = $("<td colspan='4'></td>");
                   td4[0].innerHTML = item.email;
 
-                  var tr = $("<tr></tr>");
+                  var tr = $("<tr class='live_update_contacts_singapore'></tr>");
                   tr.append(td1);
                   tr.append(td2);
                   tr.append(td3);
                   tr.append(td4);
 
                   tableBody.append(tr);
+              });
+
+              $('#CMF_Singapore_FooterContacts').editableTableWidget({
+                  disableClass: "no-change-text"
               });
           });
 }

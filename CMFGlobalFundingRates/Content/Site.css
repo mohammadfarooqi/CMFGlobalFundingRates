@@ -26,3 +26,10 @@ textarea {
 .custom_table_header_bg_color {
     background-color: lightblue;
 }
+
+td.no-change-text:focus {
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+    outline:none;
+}
