@@ -73,6 +73,50 @@ function initializeTorontoTable(path) {
               $('#CMF_Toronto_TableBody').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              //$('#CMF_Toronto_TableBody').find('td').each(function (index, ele) {
+              //    console.log(index, ele)
+              //});
+
+              $('#CMF_Toronto_TableBody td').on('change', function (evt, newValue) {
+                  var rowID = $(this).siblings()[0].innerHTML;
+                  var propertyValue = newValue;
+                  var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+
+                  switch (propertyName.toLowerCase()) {
+                      case "o/n":
+                          propertyName = "oN_Repo";
+                          break;
+                      case "1m":
+                          propertyName = "oneMonth_Fixed";
+                          break;
+                      case "2m":
+                          propertyName = "twoMonth_Fixed";
+                          break;
+                      case "3m":
+                          propertyName = "threeMonth_Fixed";
+                          break;
+                      case "12m":
+                          propertyName = "twelveMonth_Fixed";
+                          break;
+                      default:
+                          break;
+                  }
+
+                  //update db
+                  $.ajax({
+                      type: "PUT",
+                      url: 'api/CMF_TorontoData/Edit/' + rowID,
+                      data: {
+                          "propertyName": propertyName,
+                          "propertyValue": propertyValue
+                      },
+                      dataType: "json",
+                      success: function (data) {
+                          console.log(data);
+                      }
+                  });
+              });
           });
 }
 
@@ -183,6 +227,71 @@ function initializeNewYorkTable(path) {
 
               $('#CMF_NewYork_TableBody').editableTableWidget({
                   disableClass: "no-change-text"
+              });
+
+              $('#CMF_NewYork_TableBody td').on('change', function (evt, newValue) {
+                  var rowID = $(this).siblings()[0].innerHTML;
+                  var propertyValue = newValue;
+                  //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+                  var propertyName;
+
+                  var currentCellIndex = $(this).index();
+                  var fixedOrFloating = "";
+
+                  if (currentCellIndex == 4 || currentCellIndex == 5) {
+                      fixedOrFloating = (currentCellIndex == 4) ? "fixed" : "floating";
+                      currentCellIndex = 4;
+                  }
+                  else if (currentCellIndex == 6 || currentCellIndex == 7) {
+                      fixedOrFloating = (currentCellIndex == 6) ? "fixed" : "floating";
+                      currentCellIndex = 5;
+                  }
+                  else if (currentCellIndex == 8 || currentCellIndex == 9) {
+                      fixedOrFloating = (currentCellIndex == 8) ? "fixed" : "floating";
+                      currentCellIndex = 6;
+                  }
+                  else if (currentCellIndex == 10 || currentCellIndex == 11) {
+                      fixedOrFloating = (currentCellIndex == 10) ? "fixed" : "floating";
+                      currentCellIndex = 7;
+                  }
+
+                  propertyName = $(this).closest('table').find('th').eq(currentCellIndex)[0].innerHTML;
+
+                  //console.log(rowID + " " + propertyName + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating) + " " + propertyValue);
+                  
+                  switch (propertyName.toLowerCase()) {
+                      case "o/n":
+                          propertyName = "oN_Repo";
+                          break;
+                      case "1m":
+                          propertyName = "oneMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                          break;
+                      case "3m":
+                          propertyName = "threeMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                          break;
+                      case "6m":
+                          propertyName = "sixMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                          break;
+                      case "12m":
+                          propertyName = "twelveMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                          break;
+                      default:
+                          break;
+                  }
+
+                  //update db
+                  $.ajax({
+                      type: "PUT",
+                      url: 'api/CMF_NewYorkData/Edit/' + rowID,
+                      data: {
+                          "propertyName": propertyName,
+                          "propertyValue": propertyValue
+                      },
+                      dataType: "json",
+                      success: function (data) {
+                          console.log(data);
+                      }
+                  });
               });
           });
 }
