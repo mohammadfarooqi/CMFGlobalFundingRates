@@ -156,6 +156,8 @@ function initializeTorontoTableContacts(path) {
               $('#CMF_Toronto_FooterContacts').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              addContactCellChangeListener("CMF_Toronto_FooterContacts");
           });
 }
 
@@ -332,6 +334,8 @@ function initializeNewYorkTableContacts(path) {
               $('#CMF_NewYork_FooterContacts').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              addContactCellChangeListener("CMF_NewYork_FooterContacts");
           });
 }
 
@@ -387,6 +391,49 @@ function initializeLondon1Table(path) {
 
               $('#CMF_London1_TableBody').editableTableWidget({
                   disableClass: "no-change-text"
+              });
+
+              $('#CMF_London1_TableBody td').on('change', function (evt, newValue) {
+                  var rowID = $(this).siblings()[0].innerHTML;
+                  var propertyValue = newValue;
+                  var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+                  //var propertyName;
+
+                  console.log(rowID + " " + propertyName + " " + propertyValue);
+
+                  switch (propertyName.toLowerCase()) {
+                      case "o/n":
+                          propertyName = "oN_Repo";
+                          break;
+                      case "1m":
+                          propertyName = "oneMonth_fixed";
+                          break;
+                      case "3m":
+                          propertyName = "threeMonth_fixed";
+                          break;
+                      case "6m":
+                          propertyName = "sixMonth_fixed";
+                          break;
+                      case "12m":
+                          propertyName = "twelveMonth_fixed";
+                          break;
+                      default:
+                          break;
+                  }
+
+                  //update db
+                  $.ajax({
+                      type: "PUT",
+                      url: 'api/CMF_London1Data/Edit/' + rowID,
+                      data: {
+                          "propertyName": propertyName,
+                          "propertyValue": propertyValue
+                      },
+                      dataType: "json",
+                      success: function (data) {
+                          console.log(data);
+                      }
+                  });
               });
           });
 }
@@ -444,6 +491,65 @@ function initializeLondon2Table(path) {
               $('#CMF_London2_TableBody').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              $('#CMF_London2_TableBody td').on('change', function (evt, newValue) {
+                  var rowID = $(this).siblings()[0].innerHTML;
+                  var propertyValue = newValue;
+                  //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+                  var propertyName;
+
+                  var currentCellIndex = $(this).index();
+                  var indexedOrFixedValue = "";
+
+                  if (currentCellIndex == 4 || currentCellIndex == 5) {
+                      indexedOrFixedValue = (currentCellIndex == 4) ? "indexed" : "fixedvalue";
+                      currentCellIndex = 4;
+                  }
+                  else if (currentCellIndex == 6 || currentCellIndex == 7) {
+                      indexedOrFixedValue = (currentCellIndex == 6) ? "indexed" : "fixedvalue";
+                      currentCellIndex = 5;
+                  }
+
+                  propertyName = $($(this).closest('table').find('thead')[1]).find('th').eq(currentCellIndex)[0].innerHTML;
+
+                  //console.log(rowID + " " + propertyName + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue) + " " + propertyValue);
+
+                  switch (propertyName.toLowerCase()) {
+                      case "o/n":
+                          propertyName = "on";
+                          break;
+                      case "1m":
+                          propertyName = "oneMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                          break;
+                      case "3m":
+                          propertyName = "threeMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                          break;
+                      case "6m":
+                          propertyName = "sixMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                          break;
+                      case "12m":
+                          propertyName = "twelveMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                          break;
+                      default:
+                          break;
+                  }
+
+                  //console.log(rowID + " " + propertyName + " " + propertyValue);
+
+                  //update db
+                  $.ajax({
+                      type: "PUT",
+                      url: 'api/CMF_London2Data/Edit/' + rowID,
+                      data: {
+                          "propertyName": propertyName,
+                          "propertyValue": propertyValue
+                      },
+                      dataType: "json",
+                      success: function (data) {
+                          console.log(data);
+                      }
+                  });
+              });
           });
 }
 
@@ -483,6 +589,8 @@ function initializeLondonTableContacts(path) {
               $('#CMF_London_FooterContacts').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              addContactCellChangeListener("CMF_London_FooterContacts");
           });
 }
 
@@ -547,6 +655,54 @@ function initializeSingaporeTable(path) {
               $('#CMF_Singapore_TableBody').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              $('#CMF_Singapore_TableBody td').on('change', function (evt, newValue) {
+                  var rowID = $(this).siblings()[0].innerHTML;
+                  var propertyValue = newValue;
+                  var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+
+                  switch (propertyName.toLowerCase()) {
+                      case "o/n":
+                          propertyName = "oN_Repo";
+                          break;
+                      case "1m":
+                          propertyName = "oneMonth_Fixed";
+                          break;
+                      case "2m":
+                          propertyName = "twoMonth_Fixed";
+                          break;
+                      case "3m":
+                          propertyName = "threeMonth_Fixed";
+                          break;
+                      case "4m":
+                          propertyName = "fourMonth_Fixed";
+                          break;
+                      case "5m":
+                          propertyName = "fiveMonth_Fixed";
+                          break;
+                      case "6m":
+                          propertyName = "sixMonth_Fixed";
+                          break;
+                      default:
+                          break;
+                  }
+
+                  //console.log(rowID + " " + propertyName + " " + propertyValue);
+
+                  //update db
+                  $.ajax({
+                      type: "PUT",
+                      url: 'api/CMF_SingaporeData/Edit/' + rowID,
+                      data: {
+                          "propertyName": propertyName,
+                          "propertyValue": propertyValue
+                      },
+                      dataType: "json",
+                      success: function (data) {
+                          console.log(data);
+                      }
+                  });
+              });
           });
 }
 
@@ -586,5 +742,44 @@ function initializeSingaporeTableContacts(path) {
               $('#CMF_Singapore_FooterContacts').editableTableWidget({
                   disableClass: "no-change-text"
               });
+
+              addContactCellChangeListener("CMF_Singapore_FooterContacts");
           });
+}
+
+function addContactCellChangeListener(uniqueId) {
+    $('#' + uniqueId + ' td').on('change', function (evt, newValue) {
+        var rowID = $(this).siblings()[0].innerHTML;
+        var propertyValue = newValue;
+        //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+        var propertyName = $(this).closest('table').find('tfoot').find('th').eq($(this).index())[0].innerHTML;
+
+        switch (propertyName.toLowerCase()) {
+            case "contact":
+                propertyName = "name";
+                break;
+            case "phone":
+                propertyName = "phone";
+                break;
+            case "email":
+                propertyName = "email";
+                break;
+            default:
+                break;
+        }
+
+        //update db
+        $.ajax({
+            type: "PUT",
+            url: 'api/CMF_ContactsData/Edit/' + rowID,
+            data: {
+                "propertyName": propertyName,
+                "propertyValue": propertyValue
+            },
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
 }
