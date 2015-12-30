@@ -13,11 +13,21 @@
     initializeSingaporeTable('api/CMF_SingaporeData');
     initializeSingaporeTableContacts('api/CMF_ContactsData/Singapore');
 
-    //var updates = $.connection.liveUpdates;
+    var updates = $.connection.liveUpdates;
     
-    //$.connection.hub.start().done(function () {
+    updates.client.addNewMessageToPage = function (id, value) {
+        updateCellById(id, value);
+        console.log("received");
+    };
 
-    //});
+    //$.connection.hub.logging = true;
+
+    $.connection.hub.start().done(function () {
+        $("td").on("change", function () {
+            updates.server.send($(this).attr('id'), $(this).text());
+            console.log("sent");
+        });
+    });
 });
 
 function initializeTorontoTable(path) {
@@ -36,25 +46,25 @@ function initializeTorontoTable(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td class='text-center'></td>");
+                  var td2 = $("<td class='text-center' id='toronto-" + item.id + "-currency'></td>");
                   td2[0].innerHTML = item.currency;
 
-                  var td3 = $("<td class='text-center'></td>");
+                  var td3 = $("<td class='text-center' id='toronto-" + item.id + "-product'></td>");
                   td3[0].innerHTML = item.product;
 
-                  var td4 = $("<td class='text-center'></td>");
+                  var td4 = $("<td class='text-center' id='toronto-" + item.id + "-on'></td>");
                   td4[0].innerHTML = item.oN_Repo;
 
-                  var td5 = $("<td class='text-center'></td>");
+                  var td5 = $("<td class='text-center' id='toronto-" + item.id + "-1m'></td>");
                   td5[0].innerHTML = item.oneMonth_Fixed;
 
-                  var td6 = $("<td class='text-center'></td>");
+                  var td6 = $("<td class='text-center' id='toronto-" + item.id + "-2m'></td>");
                   td6[0].innerHTML = item.twoMonth_Fixed;
 
-                  var td7 = $("<td class='text-center'></td>");
+                  var td7 = $("<td class='text-center' id='toronto-" + item.id + "-3m'></td>");
                   td7[0].innerHTML = item.threeMonth_Fixed;
 
-                  var td8 = $("<td class='text-center'></td>");
+                  var td8 = $("<td class='text-center' id='toronto-" + item.id + "-12m'></td>");
                   td8[0].innerHTML = item.twelveMonth_Fixed;
 
                   var tr = $("<tr class='live_update_toronto'></tr>");
@@ -113,7 +123,8 @@ function initializeTorontoTable(path) {
                       },
                       dataType: "json",
                       success: function (data) {
-                          console.log(data);
+                          //console.log(data);
+                          console.log("success");
                       }
                   });
               });
@@ -130,18 +141,18 @@ function initializeTorontoTableContacts(path) {
               $(".live_update_contacts_toronto").remove();
 
               var tableBody = $("#CMF_Toronto_FooterContacts");
-
+              
               $.each(data, function (key, item) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td colspan='2'></td>");
+                  var td2 = $("<td colspan='2' id='toronto-contact-" + item.id + "-name'></td>");
                   td2[0].innerHTML = item.name;
 
-                  var td3 = $("<td colspan='2'></td>");
+                  var td3 = $("<td colspan='2' id='toronto-contact-" + item.id + "-phone'></td>");
                   td3[0].innerHTML = item.phone;
 
-                  var td4 = $("<td colspan='3'></td>");
+                  var td4 = $("<td colspan='3' id='toronto-contact-" + item.id + "-email'></td>");
                   td4[0].innerHTML = item.email;
 
                   var tr = $("<tr class='live_update_contacts_toronto'></tr>");
@@ -177,37 +188,37 @@ function initializeNewYorkTable(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td class='text-center'></td>");
+                  var td2 = $("<td class='text-center' id='newyork-" + item.id + "-currency'></td>");
                   td2[0].innerHTML = item.currency;
 
-                  var td3 = $("<td class='text-center'></td>");
+                  var td3 = $("<td class='text-center' id='newyork-" + item.id + "-product'></td>");
                   td3[0].innerHTML = item.product;
 
-                  var td4 = $("<td class='text-center'></td>");
+                  var td4 = $("<td class='text-center' id='newyork-" + item.id + "-on'></td>");
                   td4[0].innerHTML = item.oN_Repo;
 
-                  var td5 = $("<td class='text-center'></td>");
+                  var td5 = $("<td class='text-center' id='newyork-" + item.id + "-1m_fixed'></td>");
                   td5[0].innerHTML = item.oneMonth_Fixed;
 
-                  var td6 = $("<td class='text-center'></td>");
+                  var td6 = $("<td class='text-center' id='newyork-" + item.id + "-1m_floating'></td>");
                   td6[0].innerHTML = item.oneMonth_Floating;
 
-                  var td7 = $("<td class='text-center'></td>");
+                  var td7 = $("<td class='text-center' id='newyork-" + item.id + "-3m_fixed'></td>");
                   td7[0].innerHTML = item.threeMonth_Fixed;
 
-                  var td8 = $("<td class='text-center'></td>");
+                  var td8 = $("<td class='text-center' id='newyork-" + item.id + "-3m_floating'></td>");
                   td8[0].innerHTML = item.threeMonth_Floating;
 
-                  var td9 = $("<td class='text-center'></td>");
+                  var td9 = $("<td class='text-center' id='newyork-" + item.id + "-6m_fixed'></td>");
                   td9[0].innerHTML = item.sixMonth_Fixed;
 
-                  var td10 = $("<td class='text-center'></td>");
+                  var td10 = $("<td class='text-center' id='newyork-" + item.id + "-6m_floating'></td>");
                   td10[0].innerHTML = item.sixMonth_Floating;
 
-                  var td11 = $("<td class='text-center'></td>");
+                  var td11 = $("<td class='text-center' id='newyork-" + item.id + "-12m_fixed'></td>");
                   td11[0].innerHTML = item.twelveMonth_Fixed;
 
-                  var td12 = $("<td class='text-center'></td>");
+                  var td12 = $("<td class='text-center' id='newyork-" + item.id + "-12m_floating'></td>");
                   td12[0].innerHTML = item.twelveMonth_Floating;
 
                   var tr = $("<tr class='live_update_newyork'></tr>");
@@ -291,7 +302,8 @@ function initializeNewYorkTable(path) {
                       },
                       dataType: "json",
                       success: function (data) {
-                          console.log(data);
+                          //console.log(data);
+                          console.log("success");
                       }
                   });
               });
@@ -313,13 +325,13 @@ function initializeNewYorkTableContacts(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td colspan='3'></td>");
+                  var td2 = $("<td colspan='3' id='newyork-contact-" + item.id + "-name'></td>");
                   td2[0].innerHTML = item.name;
 
-                  var td3 = $("<td colspan='2'></td>");
+                  var td3 = $("<td colspan='2' id='newyork-contact-" + item.id + "-phone'></td>");
                   td3[0].innerHTML = item.phone;
 
-                  var td4 = $("<td colspan='6'></td>");
+                  var td4 = $("<td colspan='6' id='newyork-contact-" + item.id + "-email'></td>");
                   td4[0].innerHTML = item.email;
 
                   var tr = $("<tr class='live_update_contacts_newyork'></tr>");
@@ -355,25 +367,25 @@ function initializeLondon1Table(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td class='text-center'></td>");
+                  var td2 = $("<td class='text-center' id='london1-" + item.id + "-currency'></td>");
                   td2[0].innerHTML = item.currency;
 
-                  var td3 = $("<td class='text-center'></td>");
+                  var td3 = $("<td class='text-center' id='london1-" + item.id + "-product'></td>");
                   td3[0].innerHTML = item.product;
 
-                  var td4 = $("<td class='text-center'></td>");
+                  var td4 = $("<td class='text-center' id='london1-" + item.id + "-on'></td>");
                   td4[0].innerHTML = item.oN_Repo;
 
-                  var td5 = $("<td class='text-center'></td>");
+                  var td5 = $("<td class='text-center' id='london1-" + item.id + "-1m_fixed'></td>");
                   td5[0].innerHTML = item.oneMonth_Fixed;
 
-                  var td6 = $("<td class='text-center'></td>");
+                  var td6 = $("<td class='text-center' id='london1-" + item.id + "-3m_fixed'></td>");
                   td6[0].innerHTML = item.threeMonth_Fixed;
 
-                  var td7 = $("<td class='text-center'></td>");
+                  var td7 = $("<td class='text-center' id='london1-" + item.id + "-6m_fixed'></td>");
                   td7[0].innerHTML = item.sixMonth_Fixed;
 
-                  var td8 = $("<td class='text-center'></td>");
+                  var td8 = $("<td class='text-center' id='london1-" + item.id + "-12m_fixed'></td>");
                   td8[0].innerHTML = item.twelveMonth_Fixed;
 
                   var tr = $("<tr class='live_update_london1'></tr>");
@@ -431,7 +443,8 @@ function initializeLondon1Table(path) {
                       },
                       dataType: "json",
                       success: function (data) {
-                          console.log(data);
+                          //console.log(data);
+                          console.log("success");
                       }
                   });
               });
@@ -454,25 +467,25 @@ function initializeLondon2Table(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td class='text-center'></td>");
+                  var td2 = $("<td class='text-center' id='london2-" + item.id + "-currency'></td>");
                   td2[0].innerHTML = item.currency;
 
-                  var td3 = $("<td class='text-center'></td>");
+                  var td3 = $("<td class='text-center' id='london2-" + item.id + "-product'></td>");
                   td3[0].innerHTML = item.product;
 
-                  var td4 = $("<td class='text-center'></td>");
+                  var td4 = $("<td class='text-center' id='london2-" + item.id + "-on'></td>");
                   td4[0].innerHTML = item.on;
 
-                  var td5 = $("<td class='text-center'></td>");
+                  var td5 = $("<td class='text-center' id='london2-" + item.id + "-1m_indexed'></td>");
                   td5[0].innerHTML = item.oneMonth_Indexed;
 
-                  var td6 = $("<td class='text-center'></td>");
+                  var td6 = $("<td class='text-center' id='london2-" + item.id + "-1m_fixedvalue'></td>");
                   td6[0].innerHTML = item.oneMonth_FixedValue;
 
-                  var td7 = $("<td class='text-center'></td>");
+                  var td7 = $("<td class='text-center' id='london2-" + item.id + "-3m_indexed'></td>");
                   td7[0].innerHTML = item.threeMonth_Indexed;
 
-                  var td8 = $("<td class='text-center'></td>");
+                  var td8 = $("<td class='text-center' id='london2-" + item.id + "-3m_fixedvalue'></td>");
                   td8[0].innerHTML = item.threeMonth_FixedValue;
 
                   var tr = $("<tr class='live_update_london2'></tr>");
@@ -546,7 +559,8 @@ function initializeLondon2Table(path) {
                       },
                       dataType: "json",
                       success: function (data) {
-                          console.log(data);
+                          //console.log(data);
+                          console.log("success");
                       }
                   });
               });
@@ -568,13 +582,13 @@ function initializeLondonTableContacts(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td colspan='3'></td>");
+                  var td2 = $("<td colspan='3' id='london-contact-" + item.id + "-name'></td>");
                   td2[0].innerHTML = item.name;
 
-                  var td3 = $("<td colspan='1'></td>");
+                  var td3 = $("<td colspan='1' id='london-contact-" + item.id + "-phone'></td>");
                   td3[0].innerHTML = item.phone;
 
-                  var td4 = $("<td colspan='7'></td>");
+                  var td4 = $("<td colspan='7' id='london-contact-" + item.id + "-email'></td>");
                   td4[0].innerHTML = item.email;
 
                   var tr = $("<tr class='live_update_contacts_london'></tr>");
@@ -610,31 +624,31 @@ function initializeSingaporeTable(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td class='text-center'></td>");
+                  var td2 = $("<td class='text-center' id='singapore-" + item.id + "-currency'></td>");
                   td2[0].innerHTML = item.currency;
 
-                  var td3 = $("<td class='text-center'></td>");
+                  var td3 = $("<td class='text-center' id='singapore-" + item.id + "-product'></td>");
                   td3[0].innerHTML = item.product;
 
-                  var td4 = $("<td class='text-center'></td>");
+                  var td4 = $("<td class='text-center' id='singapore-" + item.id + "-on'></td>");
                   td4[0].innerHTML = item.oN_Repo;
 
-                  var td5 = $("<td class='text-center'></td>");
+                  var td5 = $("<td class='text-center' id='singapore-" + item.id + "-1m_fixed'></td>");
                   td5[0].innerHTML = item.oneMonth_Fixed;
 
-                  var td6 = $("<td class='text-center'></td>");
+                  var td6 = $("<td class='text-center' id='singapore-" + item.id + "-2m_fixed'></td>");
                   td6[0].innerHTML = item.twoMonth_Fixed;
 
-                  var td7 = $("<td class='text-center'></td>");
+                  var td7 = $("<td class='text-center' id='singapore-" + item.id + "-3m_fixed'></td>");
                   td7[0].innerHTML = item.threeMonth_Fixed;
 
-                  var td8 = $("<td class='text-center'></td>");
+                  var td8 = $("<td class='text-center' id='singapore-" + item.id + "-4m_fixed'></td>");
                   td8[0].innerHTML = item.fourMonth_Fixed;
 
-                  var td9 = $("<td class='text-center'></td>");
+                  var td9 = $("<td class='text-center' id='singapore-" + item.id + "-5m_fixed'></td>");
                   td9[0].innerHTML = item.fiveMonth_Fixed;
 
-                  var td10 = $("<td class='text-center'></td>");
+                  var td10 = $("<td class='text-center' id='singapore-" + item.id + "-6m_fixed'></td>");
                   td10[0].innerHTML = item.sixMonth_Fixed;
 
                   var tr = $("<tr class='live_update_singapore'></tr>");
@@ -699,7 +713,8 @@ function initializeSingaporeTable(path) {
                       },
                       dataType: "json",
                       success: function (data) {
-                          console.log(data);
+                          //console.log(data);
+                          console.log("success");
                       }
                   });
               });
@@ -721,13 +736,13 @@ function initializeSingaporeTableContacts(path) {
                   var td1 = $("<td class='hidden'></td>");
                   td1[0].innerHTML = item.id;
 
-                  var td2 = $("<td colspan='2'></td>");
+                  var td2 = $("<td colspan='2' id='singapore-contact-" + item.id + "-name'></td>");
                   td2[0].innerHTML = item.name;
 
-                  var td3 = $("<td colspan='3'></td>");
+                  var td3 = $("<td colspan='3' id='singapore-contact-" + item.id + "-phone'></td>");
                   td3[0].innerHTML = item.phone;
 
-                  var td4 = $("<td colspan='4'></td>");
+                  var td4 = $("<td colspan='4' id='singapore-contact-" + item.id + "-email'></td>");
                   td4[0].innerHTML = item.email;
 
                   var tr = $("<tr class='live_update_contacts_singapore'></tr>");
@@ -778,8 +793,13 @@ function addContactCellChangeListener(uniqueId) {
             },
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                //console.log(data);
+                console.log("success");
             }
         });
     });
+}
+
+function updateCellById(id, value) {
+    $("#" + id).text(value);
 }
