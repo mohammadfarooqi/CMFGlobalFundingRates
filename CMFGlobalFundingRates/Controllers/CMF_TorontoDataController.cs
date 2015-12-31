@@ -21,6 +21,13 @@ namespace CMFGlobalFundingRates.Controllers
             return db.CMF_Toronto;
         }
 
+        [Route("{id}")]
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
+        {
+            return Ok(db.CMF_Toronto.FirstOrDefault(p => p.Id == id));
+        }
+
         //[Route("api/CMF_TorontoData/Edit")]
         [Route("Edit/{id}")]
         [HttpPut]
@@ -67,6 +74,24 @@ namespace CMFGlobalFundingRates.Controllers
                     default:
                         return NotFound();
                 }
+            }
+
+            return Ok(row);
+        }
+
+        [Route("Add")]
+        [HttpPost]
+        public IHttpActionResult Add([FromBody]CMF_Toronto temp)
+        {
+            var row = db.CMF_Toronto.Add(temp);
+
+            if (row == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                db.SaveChanges();
             }
 
             return Ok(row);

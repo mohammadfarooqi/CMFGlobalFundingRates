@@ -20,6 +20,13 @@ namespace CMFGlobalFundingRates.Controllers
             return db.CMF_NewYork;
         }
 
+        [Route("{id}")]
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
+        {
+            return Ok(db.CMF_NewYork.FirstOrDefault(p => p.Id == id));
+        }
+
         [Route("Edit/{id}")]
         [HttpPut]
         public IHttpActionResult Edit(int id, [FromBody]Property tempProp)
@@ -81,6 +88,24 @@ namespace CMFGlobalFundingRates.Controllers
                     default:
                         return NotFound();
                 }
+            }
+
+            return Ok(row);
+        }
+
+        [Route("Add")]
+        [HttpPost]
+        public IHttpActionResult Add([FromBody]CMF_NewYork temp)
+        {
+            var row = db.CMF_NewYork.Add(temp);
+
+            if (row == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                db.SaveChanges();
             }
 
             return Ok(row);

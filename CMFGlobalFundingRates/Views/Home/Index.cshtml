@@ -19,10 +19,12 @@
                         <a href="#collapse1" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">Collateral Management and Funding - Toronto</a>
                     </h1>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse in" aria-expanded="true">
+                <div id="collapse1" class="panel-collapse collapse" aria-expanded="true">
                     <div class="panel-body">
-                        <p>...</p>
-                        
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalToronto">Insert Row To Table</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalTorontoContact">Insert Row To Contact Table</button>
+                        </p>                        
                     </div>
                     <table class="table table-bordered">
                         <thead>
@@ -75,7 +77,10 @@
                 </div>
                 <div id="collapse2" class="panel-collapse collapse" aria-expanded="true">
                     <div class="panel-body">
-                        <p>...</p>
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalNewYork">Insert Row To Table</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalNewYorkContact">Insert Row To Contact Table</button>
+                        </p>
                     </div>
                     <table class="table table-bordered">
                         <thead>
@@ -130,9 +135,13 @@
                         <a href="#collapse3" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">Collateral Management and Funding - London</a>
                     </h4>
                 </div>
-                <div id="collapse3" class="panel-collapse collapse" aria-expanded="true">
+                <div id="collapse3" class="panel-collapse collapse in" aria-expanded="true">
                     <div class="panel-body">
-                        <p>...</p>
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalLondon1">Insert Row To Top Table</button>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalLondon2">Insert Row To Bottom Table</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalLondonContact">Insert Row To Contact Table</button>
+                        </p>
                     </div>
                     <table class="table table-bordered">
                         <thead>
@@ -207,7 +216,10 @@
                 </div>
                 <div id="collapse4" class="panel-collapse collapse" aria-expanded="true">
                     <div class="panel-body">
-                        <p>...</p>
+                        <p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalSingapore">Insert Row To Table</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalSingaporeContact">Insert Row To Contact Table</button>
+                        </p>
                     </div>
                     <table class="table table-bordered">
                         <thead>
@@ -260,6 +272,577 @@
 
     </div> @*col-md-12 finish*@
 </div> @*row finish*@
+
+
+
+
+
+<!-- Modal Toronto -->
+<div class="modal fade" id="myModalToronto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - Toronto</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="toronto_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_currency">Currency:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_currency" name="currency" placeholder="Enter Currency">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_product">Product:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_product" name="product" placeholder="Enter Product">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_on">O/N:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_on" name="on_repo" placeholder="Enter O/N">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_1m_fixed">1M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_1m_fixed" name="onemonth_fixed" placeholder="Enter 1M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_2m_fixed">2M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_2m_fixed" name="twomonth_fixed" placeholder="Enter 2M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_3m_fixed">3M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_3m_fixed" name="threemonth_fixed" placeholder="Enter 3M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_12m_fixed">12M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_12m_fixed" name="twelvemonth_fixed" placeholder="Enter 12M (Fixed)">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_toronto_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Toronto Contact -->
+<div class="modal fade" id="myModalTorontoContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - Toronto Contacts</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="toronto_contact_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_contact_contact">Contact:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_contact_contact" name="contact" placeholder="Enter Contact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_contact_phone">Phone:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_contact_phone" name="phone" placeholder="Enter Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_contact_email">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_contact_email" name="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_toronto_contact_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal New York -->
+<div class="modal fade" id="myModalNewYork" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - New York</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="newyork_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_currency">Currency:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_currency" name="currency" placeholder="Enter Currency">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_product">Product:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_product" name="product" placeholder="Enter Product">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_on">O/N:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_on" name="on_repo" placeholder="Enter O/N">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_1m_fixed">1M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_1m_fixed" name="onemonth_fixed" placeholder="Enter 1M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_1m_floating">1M (Floating):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_1m_floating" name="onemonth_floating" placeholder="Enter 1M (Floating)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_3m_fixed">3M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_3m_fixed" name="threemonth_fixed" placeholder="Enter 3M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_3m_floating">3M (Floating):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_3m_floating" name="threemonth_floating" placeholder="Enter 3M (Floating)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_6m_fixed">6M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_6m_fixed" name="sixmonth_fixed" placeholder="Enter 6M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_6m_floating">6M (Floating):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_6m_floating" name="sixmonth_floating" placeholder="Enter 6M (Floating)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_12m_fixed">12M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_12m_fixed" name="twelvemonth_fixed" placeholder="Enter 12M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_toronto_12m_floating">12M (Floating):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_toronto_12m_floating" name="twelvemonth_floating" placeholder="Enter 12M (Floating)">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_newyork_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal New York Contact -->
+<div class="modal fade" id="myModalNewYorkContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - New York Contacts</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="newyork_contact_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_contact_contact">Contact:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_contact_contact" name="contact" placeholder="Enter Contact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_contact_phone">Phone:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_contact_phone" name="phone" placeholder="Enter Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_newyork_contact_email">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_newyork_contact_email" name="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_newyork_contact_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Modal London 1 -->
+<div class="modal fade" id="myModalLondon1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - London Top Table</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="london1_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_currency">Currency:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_currency" name="currency" placeholder="Enter Currency">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_product">Product:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_product" name="product" placeholder="Enter Product">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_on">O/N:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_on" name="on_repo" placeholder="Enter O/N">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_1m_fixed">1M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_1m_fixed" name="onemonth_fixed" placeholder="Enter 1M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_3m_fixed">3M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_3m_fixed" name="threemonth_fixed" placeholder="Enter 3M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_6m_fixed">6M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_6m_fixed" name="sixmonth_fixed" placeholder="Enter 6M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london1_12m_fixed">12M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london1_12m_fixed" name="twelvemonth_fixed" placeholder="Enter 12M (Fixed)">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_london1_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal London 2 -->
+<div class="modal fade" id="myModalLondon2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - London Bottom Table</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="london2_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_currency">Currency:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_currency" name="currency" placeholder="Enter Currency">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_product">Product:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_product" name="product" placeholder="Enter Product">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_on">O/N:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_on" name="on_repo" placeholder="Enter O/N">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_1m_indexed">1M (Indexed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_1m_indexed" name="onemonth_indexed" placeholder="Enter 1M (Indexed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_1m_fixedvalue">1M (Fixed Value):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_1m_fixedvalue" name="onemonth_fixedvalue" placeholder="Enter 1M (Fixed Value)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_3m_indexed">3M (Indexed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_3m_indexed" name="threemonth_indexed" placeholder="Enter 3M (Indexed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london2_3m_fixedvalue">3M (Fixed Value):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london2_3m_fixedvalue" name="threemonth_fixedvalue" placeholder="Enter 3M (Fixed Value)">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_london2_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal London Contact -->
+<div class="modal fade" id="myModalLondonContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - London Contacts</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="london_contact_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london_contact_contact">Contact:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london_contact_contact" name="contact" placeholder="Enter Contact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london_contact_phone">Phone:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london_contact_phone" name="phone" placeholder="Enter Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_london_contact_email">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_london_contact_email" name="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_london_contact_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Modal Singapore -->
+<div class="modal fade" id="myModalSingapore" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - Singapore</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="singapore_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_currency">Currency:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_currency" name="currency" placeholder="Enter Currency">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_product">Product:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_product" name="product" placeholder="Enter Product">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_on">O/N:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_on" name="on_repo" placeholder="Enter O/N">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_1m_fixed">1M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_1m_fixed" name="onemonth_fixed" placeholder="Enter 1M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_2m_fixed">2M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_2m_fixed" name="twomonth_fixed" placeholder="Enter 2M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_3m_fixed">3M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_3m_fixed" name="threemonth_fixed" placeholder="Enter 3M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_4m_fixed">4M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_4m_fixed" name="fourmonth_fixed" placeholder="Enter 4M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_5m_fixed">5M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_5m_fixed" name="fivemonth_fixed" placeholder="Enter 5M (Fixed)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_6m_fixed">6M (Fixed):</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_6m_fixed" name="sixmonth_fixed" placeholder="Enter 6M (Fixed)">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_singapore_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Singapore Contact -->
+<div class="modal fade" id="myModalSingaporeContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Insert to <em>Collateral Management and Funding - Singapore Contacts</em></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="singapore_contact_form_modal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_contact_contact">Contact:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_contact_contact" name="contact" placeholder="Enter Contact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_contact_phone">Phone:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_contact_phone" name="phone" placeholder="Enter Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="ins_singapore_contact_email">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="ins_singapore_contact_email" name="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>*@
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="ins_singapore_contact_row()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 @*<div class="row">
     <div class="col-md-4">

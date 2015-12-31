@@ -25,6 +25,13 @@ namespace CMFGlobalFundingRates.Controllers
         //    return db.CMF_Contacts.Where(c => c.Location == location);
         //}
 
+        [Route("{location}/{id}")]
+        [HttpGet]
+        public IHttpActionResult GetContactById(string location, int id)
+        {
+            return Ok(db.CMF_Contacts.FirstOrDefault(c => c.Id == id));
+        }
+
         [Route("{location}")]
         [HttpGet]
         public IEnumerable<CMF_Contacts> GetContacts(string location)
@@ -61,6 +68,24 @@ namespace CMFGlobalFundingRates.Controllers
                     default:
                         return NotFound();
                 }
+            }
+
+            return Ok(row);
+        }
+
+        [Route("Add")]
+        [HttpPost]
+        public IHttpActionResult Add([FromBody]CMF_Contacts temp)
+        {
+            var row = db.CMF_Contacts.Add(temp);
+
+            if (row == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                db.SaveChanges();
             }
 
             return Ok(row);

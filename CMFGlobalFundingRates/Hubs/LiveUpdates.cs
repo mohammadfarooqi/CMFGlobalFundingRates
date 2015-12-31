@@ -13,5 +13,12 @@ namespace CMFGlobalFundingRates.Hubs
             // Call the addNewMessageToPage method to update clients.
             Clients.All.addNewMessageToPage(id, value);
         }
+
+        public void InsRow(string type, string location, int id)
+        {
+            // Call the addNewMessageToPage method to update clients.
+            //Clients.All.addNewMessageToPage(id, value);
+            Clients.Others.InsRowMessageToPage(type, location, id);
+        }
     }
 }
