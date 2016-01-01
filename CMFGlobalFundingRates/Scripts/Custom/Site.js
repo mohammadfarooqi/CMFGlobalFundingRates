@@ -20,6 +20,23 @@
         console.log("received");
     };
 
+    updatesUnique.client.DelRowMessageToPage = function (classname, id) {
+        //console.log(classname, id);
+        var tr = null;
+        
+        $(classname).each(function (index, value) {
+            if ($(value).text() == id) {
+                tr = $(value).parent();
+            }
+        });
+
+        if (tr) {
+            tr.remove();
+        }
+
+        console.log("received");
+    };
+
     updatesUnique.client.InsRowMessageToPage = function (type, location, iD) {
         if (type == "table") {
             switch (location) {
@@ -74,6 +91,8 @@
                             addEditableTableWidget("CMF_Toronto_TableBody");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -145,6 +164,8 @@
                             addEditableTableWidget("CMF_NewYork_TableBody");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -200,6 +221,8 @@
                             addEditableTableWidget("CMF_London1_TableBody");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -255,6 +278,8 @@
                             addEditableTableWidget("CMF_London2_TableBody");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -318,6 +343,8 @@
                             addEditableTableWidget("CMF_Singapore_TableBody");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -363,6 +390,8 @@
                             addEditableTableWidget("CMF_Toronto_FooterContacts");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -402,6 +431,8 @@
                             addEditableTableWidget("CMF_NewYork_FooterContacts");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -441,6 +472,8 @@
                             addEditableTableWidget("CMF_London_FooterContacts");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -480,6 +513,8 @@
                             addEditableTableWidget("CMF_Singapore_FooterContacts");
 
                             initHub();
+
+                            reregisterDeleteRowEventListener();
                         }
                     });
 
@@ -594,6 +629,8 @@ function initializeTorontoTable(path) {
                       }
                   });
               });
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -634,6 +671,8 @@ function initializeTorontoTableContacts(path) {
               addEditableTableWidget("CMF_Toronto_FooterContacts");
 
               addContactCellChangeListener("CMF_Toronto_FooterContacts");
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -771,6 +810,8 @@ function initializeNewYorkTable(path) {
                       }
                   });
               });
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -811,6 +852,8 @@ function initializeNewYorkTableContacts(path) {
               addEditableTableWidget("CMF_NewYork_FooterContacts");
 
               addContactCellChangeListener("CMF_NewYork_FooterContacts");
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -910,6 +953,8 @@ function initializeLondon1Table(path) {
                       }
                   });
               });
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -1025,6 +1070,8 @@ function initializeLondon2Table(path) {
                       }
                   });
               });
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -1065,6 +1112,8 @@ function initializeLondonTableContacts(path) {
               addEditableTableWidget("CMF_London_FooterContacts");
 
               addContactCellChangeListener("CMF_London_FooterContacts");
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -1177,6 +1226,8 @@ function initializeSingaporeTable(path) {
                       }
                   });
               });
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -1217,6 +1268,8 @@ function initializeSingaporeTableContacts(path) {
               addEditableTableWidget("CMF_Singapore_FooterContacts");
 
               addContactCellChangeListener("CMF_Singapore_FooterContacts");
+
+              reregisterDeleteRowEventListener();
           });
 }
 
@@ -1323,6 +1376,8 @@ function ins_toronto_row() {
 
             initHub();
             hubInsRow("table", "toronto", data.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1374,6 +1429,8 @@ function ins_toronto_contact_row() {
 
             initHub();
             hubInsRow("contact", "toronto", data.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1464,6 +1521,8 @@ function ins_newyork_row() {
 
             initHub();
             hubInsRow("table", "newyork", data.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1515,6 +1574,8 @@ function ins_newyork_contact_row() {
 
             initHub();
             hubInsRow("contact", "newyork", item.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1585,6 +1646,8 @@ function ins_london1_row() {
 
             initHub();
             hubInsRow("table", "london1", item.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1655,6 +1718,8 @@ function ins_london2_row() {
 
             initHub();
             hubInsRow("table", "london2", item.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1706,6 +1771,8 @@ function ins_london_contact_row() {
 
             initHub();
             hubInsRow("contact", "london", item.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1786,6 +1853,8 @@ function ins_singapore_row() {
 
             initHub();
             hubInsRow("table", "singapore", item.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1837,6 +1906,8 @@ function ins_singapore_contact_row() {
 
             initHub();
             hubInsRow("contact", "singapore", item.id);
+
+            reregisterDeleteRowEventListener();
         }
     });
 
@@ -1867,4 +1938,85 @@ function initHub() {
 function hubInsRow(type, location, id) {
     updatesUnique.server.insRow(type, location, id);
     console.log("sent");
+}
+
+function reregisterDeleteRowEventListener() {
+    removeHoverDeleteRowEventListener();
+    addHoverDeleteRowEventListener();
+}
+
+function addHoverDeleteRowEventListener() {
+    $(".live_update_toronto, .live_update_newyork, .live_update_london1, .live_update_london2, .live_update_singapore, .live_update_contacts_toronto, .live_update_contacts_newyork, .live_update_contacts_london, .live_update_contacts_singapore").hover(function () {
+        $(this).append('<td class="tempClassRemove" style="border: none;"><button type="button" class="close deleteRowCloseButton" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button></td>');
+
+        deleteRowOnClickListener();
+
+    }, function () {
+        $(this).children(".tempClassRemove").remove();
+    });
+}
+
+function removeHoverDeleteRowEventListener() {
+    $(".live_update_toronto, .live_update_newyork, .live_update_london1, .live_update_london2, .live_update_singapore, .live_update_contacts_toronto, .live_update_contacts_newyork, .live_update_contacts_london, .live_update_contacts_singapore").unbind();
+}
+
+function deleteRowOnClickListener() {
+    $(".deleteRowCloseButton").click(function() {
+        //console.log($(this).parent().parent());
+
+        var rowID = $($(this).parent().siblings()[0]).text();
+        var tableClickedID = $(this).parent().parent().parent().attr("id");
+        var url = "";
+        var trToRemove = $(this).parent().parent();
+
+        if (tableClickedID.toLowerCase().indexOf("table") >= 0) {
+            if (tableClickedID.toLowerCase().indexOf("toronto") >= 0) {
+                url = 'api/CMF_TorontoData/' + rowID;
+            }
+            else if (tableClickedID.toLowerCase().indexOf("newyork") >= 0) {
+                url = 'api/CMF_NewYorkData/' + rowID;
+            }
+            else if (tableClickedID.toLowerCase().indexOf("london1") >= 0) {
+                url = 'api/CMF_London1Data/' + rowID;
+            }
+            else if (tableClickedID.toLowerCase().indexOf("london2") >= 0) {
+                url = 'api/CMF_London2Data/' + rowID;
+            }
+            else if (tableClickedID.toLowerCase().indexOf("singapore") >= 0) {
+                url = 'api/CMF_SingaporeData/' + rowID;
+            }
+        }
+        else if (tableClickedID.toLowerCase().indexOf("contact") >= 0) {
+            //if (tableClickedID.toLowerCase().indexOf("toronto") >= 0) {
+
+            //}
+            //else if (tableClickedID.toLowerCase().indexOf("newyork") >= 0) {
+
+            //}
+            //else if (tableClickedID.toLowerCase().indexOf("london") >= 0) {
+
+            //}
+            //else if (tableClickedID.toLowerCase().indexOf("singapore") >= 0) {
+
+            //}
+
+            url = 'api/CMF_ContactsData/' + rowID;
+        }
+
+        $.ajax({
+            type: "DELETE",
+            url: url,
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+            }
+        });
+
+        var classname = trToRemove.attr("class");
+
+        updatesUnique.server.sendDeleteAlert("." + classname + " .hidden", rowID);
+
+        trToRemove.remove();
+    });
 }

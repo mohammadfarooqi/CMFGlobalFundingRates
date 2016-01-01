@@ -14,6 +14,11 @@ namespace CMFGlobalFundingRates.Hubs
             Clients.All.addNewMessageToPage(id, value);
         }
 
+        public void SendDeleteAlert(string classSelector, int deleteRowId)
+        {
+            Clients.Others.DelRowMessageToPage(classSelector, deleteRowId);
+        }
+
         public void InsRow(string type, string location, int id)
         {
             // Call the addNewMessageToPage method to update clients.

@@ -94,5 +94,16 @@ namespace CMFGlobalFundingRates.Controllers
 
             return Ok(row);
         }
+
+        [Route("{id}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteById(int id)
+        {
+            var del = db.CMF_London_2.FirstOrDefault(c => c.Id == id);
+            db.CMF_London_2.Remove(del);
+            db.SaveChanges();
+
+            return Ok();
+        }
     }
 }

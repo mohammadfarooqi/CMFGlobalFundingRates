@@ -102,5 +102,16 @@ namespace CMFGlobalFundingRates.Controllers
 
             return Ok(row);
         }
+
+        [Route("{id}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteById(int id)
+        {
+            var del = db.CMF_Singapore.FirstOrDefault(c => c.Id == id);
+            db.CMF_Singapore.Remove(del);
+            db.SaveChanges();
+
+            return Ok();
+        }
     }
 }
