@@ -589,46 +589,7 @@ function initializeTorontoTable(path) {
               //    console.log(index, ele)
               //});
 
-              $('#CMF_Toronto_TableBody td').on('change', function (evt, newValue) {
-                  var rowID = $(this).siblings()[0].innerHTML;
-                  var propertyValue = newValue;
-                  var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
-
-                  switch (propertyName.toLowerCase()) {
-                      case "o/n":
-                          propertyName = "oN_Repo";
-                          break;
-                      case "1m":
-                          propertyName = "oneMonth_Fixed";
-                          break;
-                      case "2m":
-                          propertyName = "twoMonth_Fixed";
-                          break;
-                      case "3m":
-                          propertyName = "threeMonth_Fixed";
-                          break;
-                      case "12m":
-                          propertyName = "twelveMonth_Fixed";
-                          break;
-                      default:
-                          break;
-                  }
-
-                  //update db
-                  $.ajax({
-                      type: "PUT",
-                      url: 'api/CMF_TorontoData/Edit/' + rowID,
-                      data: {
-                          "propertyName": propertyName,
-                          "propertyValue": propertyValue
-                      },
-                      dataType: "json",
-                      success: function (data) {
-                          //console.log(data);
-                          console.log("success");
-                      }
-                  });
-              });
+              updateTorontoTableChangeEventListener();
 
               reregisterDeleteRowEventListener();
           });
@@ -745,71 +706,7 @@ function initializeNewYorkTable(path) {
               //add table widget 
               addEditableTableWidget("CMF_NewYork_TableBody");
 
-              $('#CMF_NewYork_TableBody td').on('change', function (evt, newValue) {
-                  var rowID = $(this).siblings()[0].innerHTML;
-                  var propertyValue = newValue;
-                  //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
-                  var propertyName;
-
-                  var currentCellIndex = $(this).index();
-                  var fixedOrFloating = "";
-
-                  if (currentCellIndex == 4 || currentCellIndex == 5) {
-                      fixedOrFloating = (currentCellIndex == 4) ? "fixed" : "floating";
-                      currentCellIndex = 4;
-                  }
-                  else if (currentCellIndex == 6 || currentCellIndex == 7) {
-                      fixedOrFloating = (currentCellIndex == 6) ? "fixed" : "floating";
-                      currentCellIndex = 5;
-                  }
-                  else if (currentCellIndex == 8 || currentCellIndex == 9) {
-                      fixedOrFloating = (currentCellIndex == 8) ? "fixed" : "floating";
-                      currentCellIndex = 6;
-                  }
-                  else if (currentCellIndex == 10 || currentCellIndex == 11) {
-                      fixedOrFloating = (currentCellIndex == 10) ? "fixed" : "floating";
-                      currentCellIndex = 7;
-                  }
-
-                  propertyName = $(this).closest('table').find('th').eq(currentCellIndex)[0].innerHTML;
-
-                  //console.log(rowID + " " + propertyName + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating) + " " + propertyValue);
-                  
-                  switch (propertyName.toLowerCase()) {
-                      case "o/n":
-                          propertyName = "oN_Repo";
-                          break;
-                      case "1m":
-                          propertyName = "oneMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
-                          break;
-                      case "3m":
-                          propertyName = "threeMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
-                          break;
-                      case "6m":
-                          propertyName = "sixMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
-                          break;
-                      case "12m":
-                          propertyName = "twelveMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
-                          break;
-                      default:
-                          break;
-                  }
-
-                  //update db
-                  $.ajax({
-                      type: "PUT",
-                      url: 'api/CMF_NewYorkData/Edit/' + rowID,
-                      data: {
-                          "propertyName": propertyName,
-                          "propertyValue": propertyValue
-                      },
-                      dataType: "json",
-                      success: function (data) {
-                          //console.log(data);
-                          console.log("success");
-                      }
-                  });
-              });
+              updateNewYorkTableChangeEventListener();
 
               reregisterDeleteRowEventListener();
           });
@@ -910,49 +807,7 @@ function initializeLondon1Table(path) {
               //add table widget 
               addEditableTableWidget("CMF_London1_TableBody");
 
-              $('#CMF_London1_TableBody td').on('change', function (evt, newValue) {
-                  var rowID = $(this).siblings()[0].innerHTML;
-                  var propertyValue = newValue;
-                  var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
-                  //var propertyName;
-
-                  console.log(rowID + " " + propertyName + " " + propertyValue);
-
-                  switch (propertyName.toLowerCase()) {
-                      case "o/n":
-                          propertyName = "oN_Repo";
-                          break;
-                      case "1m":
-                          propertyName = "oneMonth_fixed";
-                          break;
-                      case "3m":
-                          propertyName = "threeMonth_fixed";
-                          break;
-                      case "6m":
-                          propertyName = "sixMonth_fixed";
-                          break;
-                      case "12m":
-                          propertyName = "twelveMonth_fixed";
-                          break;
-                      default:
-                          break;
-                  }
-
-                  //update db
-                  $.ajax({
-                      type: "PUT",
-                      url: 'api/CMF_London1Data/Edit/' + rowID,
-                      data: {
-                          "propertyName": propertyName,
-                          "propertyValue": propertyValue
-                      },
-                      dataType: "json",
-                      success: function (data) {
-                          //console.log(data);
-                          console.log("success");
-                      }
-                  });
-              });
+              updateLondon1TableChangeEventListener();
 
               reregisterDeleteRowEventListener();
           });
@@ -1011,65 +866,7 @@ function initializeLondon2Table(path) {
               //add table widget 
               addEditableTableWidget("CMF_London2_TableBody");
 
-              $('#CMF_London2_TableBody td').on('change', function (evt, newValue) {
-                  var rowID = $(this).siblings()[0].innerHTML;
-                  var propertyValue = newValue;
-                  //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
-                  var propertyName;
-
-                  var currentCellIndex = $(this).index();
-                  var indexedOrFixedValue = "";
-
-                  if (currentCellIndex == 4 || currentCellIndex == 5) {
-                      indexedOrFixedValue = (currentCellIndex == 4) ? "indexed" : "fixedvalue";
-                      currentCellIndex = 4;
-                  }
-                  else if (currentCellIndex == 6 || currentCellIndex == 7) {
-                      indexedOrFixedValue = (currentCellIndex == 6) ? "indexed" : "fixedvalue";
-                      currentCellIndex = 5;
-                  }
-
-                  propertyName = $($(this).closest('table').find('thead')[1]).find('th').eq(currentCellIndex)[0].innerHTML;
-
-                  //console.log(rowID + " " + propertyName + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue) + " " + propertyValue);
-
-                  switch (propertyName.toLowerCase()) {
-                      case "o/n":
-                          propertyName = "on";
-                          break;
-                      case "1m":
-                          propertyName = "oneMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
-                          break;
-                      case "3m":
-                          propertyName = "threeMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
-                          break;
-                      case "6m":
-                          propertyName = "sixMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
-                          break;
-                      case "12m":
-                          propertyName = "twelveMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
-                          break;
-                      default:
-                          break;
-                  }
-
-                  //console.log(rowID + " " + propertyName + " " + propertyValue);
-
-                  //update db
-                  $.ajax({
-                      type: "PUT",
-                      url: 'api/CMF_London2Data/Edit/' + rowID,
-                      data: {
-                          "propertyName": propertyName,
-                          "propertyValue": propertyValue
-                      },
-                      dataType: "json",
-                      success: function (data) {
-                          //console.log(data);
-                          console.log("success");
-                      }
-                  });
-              });
+              updateLondon2TableChangeEventListener();
 
               reregisterDeleteRowEventListener();
           });
@@ -1178,54 +975,7 @@ function initializeSingaporeTable(path) {
               //add table widget 
               addEditableTableWidget("CMF_Singapore_TableBody");
 
-              $('#CMF_Singapore_TableBody td').on('change', function (evt, newValue) {
-                  var rowID = $(this).siblings()[0].innerHTML;
-                  var propertyValue = newValue;
-                  var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
-
-                  switch (propertyName.toLowerCase()) {
-                      case "o/n":
-                          propertyName = "oN_Repo";
-                          break;
-                      case "1m":
-                          propertyName = "oneMonth_Fixed";
-                          break;
-                      case "2m":
-                          propertyName = "twoMonth_Fixed";
-                          break;
-                      case "3m":
-                          propertyName = "threeMonth_Fixed";
-                          break;
-                      case "4m":
-                          propertyName = "fourMonth_Fixed";
-                          break;
-                      case "5m":
-                          propertyName = "fiveMonth_Fixed";
-                          break;
-                      case "6m":
-                          propertyName = "sixMonth_Fixed";
-                          break;
-                      default:
-                          break;
-                  }
-
-                  //console.log(rowID + " " + propertyName + " " + propertyValue);
-
-                  //update db
-                  $.ajax({
-                      type: "PUT",
-                      url: 'api/CMF_SingaporeData/Edit/' + rowID,
-                      data: {
-                          "propertyName": propertyName,
-                          "propertyValue": propertyValue
-                      },
-                      dataType: "json",
-                      success: function (data) {
-                          //console.log(data);
-                          console.log("success");
-                      }
-                  });
-              });
+              updateSingaporeTableChangeEventListener();
 
               reregisterDeleteRowEventListener();
           });
@@ -1271,6 +1021,276 @@ function initializeSingaporeTableContacts(path) {
 
               reregisterDeleteRowEventListener();
           });
+}
+
+function updateTorontoTableChangeEventListener() {
+    $('#CMF_Toronto_TableBody td').on('change', function (evt, newValue) {
+        var rowID = $(this).siblings()[0].innerHTML;
+        var propertyValue = newValue;
+        var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+
+        switch (propertyName.toLowerCase()) {
+            case "o/n":
+                propertyName = "oN_Repo";
+                break;
+            case "1m":
+                propertyName = "oneMonth_Fixed";
+                break;
+            case "2m":
+                propertyName = "twoMonth_Fixed";
+                break;
+            case "3m":
+                propertyName = "threeMonth_Fixed";
+                break;
+            case "12m":
+                propertyName = "twelveMonth_Fixed";
+                break;
+            default:
+                break;
+        }
+
+        //update db
+        $.ajax({
+            type: "PUT",
+            url: 'api/CMF_TorontoData/Edit/' + rowID,
+            data: {
+                "propertyName": propertyName,
+                "propertyValue": propertyValue
+            },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                console.log("success");
+            }
+        });
+    });
+}
+
+function updateNewYorkTableChangeEventListener() {
+    $('#CMF_NewYork_TableBody td').on('change', function (evt, newValue) {
+        var rowID = $(this).siblings()[0].innerHTML;
+        var propertyValue = newValue;
+        //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+        var propertyName;
+
+        var currentCellIndex = $(this).index();
+        var fixedOrFloating = "";
+
+        if (currentCellIndex == 4 || currentCellIndex == 5) {
+            fixedOrFloating = (currentCellIndex == 4) ? "fixed" : "floating";
+            currentCellIndex = 4;
+        }
+        else if (currentCellIndex == 6 || currentCellIndex == 7) {
+            fixedOrFloating = (currentCellIndex == 6) ? "fixed" : "floating";
+            currentCellIndex = 5;
+        }
+        else if (currentCellIndex == 8 || currentCellIndex == 9) {
+            fixedOrFloating = (currentCellIndex == 8) ? "fixed" : "floating";
+            currentCellIndex = 6;
+        }
+        else if (currentCellIndex == 10 || currentCellIndex == 11) {
+            fixedOrFloating = (currentCellIndex == 10) ? "fixed" : "floating";
+            currentCellIndex = 7;
+        }
+
+        propertyName = $(this).closest('table').find('th').eq(currentCellIndex)[0].innerHTML;
+
+        //console.log(rowID + " " + propertyName + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating) + " " + propertyValue);
+
+        switch (propertyName.toLowerCase()) {
+            case "o/n":
+                propertyName = "oN_Repo";
+                break;
+            case "1m":
+                propertyName = "oneMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                break;
+            case "3m":
+                propertyName = "threeMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                break;
+            case "6m":
+                propertyName = "sixMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                break;
+            case "12m":
+                propertyName = "twelveMonth" + ((fixedOrFloating == "") ? "" : "_" + fixedOrFloating);
+                break;
+            default:
+                break;
+        }
+
+        //update db
+        $.ajax({
+            type: "PUT",
+            url: 'api/CMF_NewYorkData/Edit/' + rowID,
+            data: {
+                "propertyName": propertyName,
+                "propertyValue": propertyValue
+            },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                console.log("success");
+            }
+        });
+    });
+}
+
+function updateLondon1TableChangeEventListener() {
+    $('#CMF_London1_TableBody td').on('change', function (evt, newValue) {
+        var rowID = $(this).siblings()[0].innerHTML;
+        var propertyValue = newValue;
+        var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+        //var propertyName;
+
+        console.log(rowID + " " + propertyName + " " + propertyValue);
+
+        switch (propertyName.toLowerCase()) {
+            case "o/n":
+                propertyName = "oN_Repo";
+                break;
+            case "1m":
+                propertyName = "oneMonth_fixed";
+                break;
+            case "3m":
+                propertyName = "threeMonth_fixed";
+                break;
+            case "6m":
+                propertyName = "sixMonth_fixed";
+                break;
+            case "12m":
+                propertyName = "twelveMonth_fixed";
+                break;
+            default:
+                break;
+        }
+
+        //update db
+        $.ajax({
+            type: "PUT",
+            url: 'api/CMF_London1Data/Edit/' + rowID,
+            data: {
+                "propertyName": propertyName,
+                "propertyValue": propertyValue
+            },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                console.log("success");
+            }
+        });
+    });
+}
+
+function updateLondon2TableChangeEventListener() {
+    $('#CMF_London2_TableBody td').on('change', function (evt, newValue) {
+        var rowID = $(this).siblings()[0].innerHTML;
+        var propertyValue = newValue;
+        //var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+        var propertyName;
+
+        var currentCellIndex = $(this).index();
+        var indexedOrFixedValue = "";
+
+        if (currentCellIndex == 4 || currentCellIndex == 5) {
+            indexedOrFixedValue = (currentCellIndex == 4) ? "indexed" : "fixedvalue";
+            currentCellIndex = 4;
+        }
+        else if (currentCellIndex == 6 || currentCellIndex == 7) {
+            indexedOrFixedValue = (currentCellIndex == 6) ? "indexed" : "fixedvalue";
+            currentCellIndex = 5;
+        }
+
+        propertyName = $($(this).closest('table').find('thead')[1]).find('th').eq(currentCellIndex)[0].innerHTML;
+
+        //console.log(rowID + " " + propertyName + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue) + " " + propertyValue);
+
+        switch (propertyName.toLowerCase()) {
+            case "o/n":
+                propertyName = "on";
+                break;
+            case "1m":
+                propertyName = "oneMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                break;
+            case "3m":
+                propertyName = "threeMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                break;
+            case "6m":
+                propertyName = "sixMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                break;
+            case "12m":
+                propertyName = "twelveMonth" + ((indexedOrFixedValue == "") ? "" : "_" + indexedOrFixedValue);
+                break;
+            default:
+                break;
+        }
+
+        //console.log(rowID + " " + propertyName + " " + propertyValue);
+
+        //update db
+        $.ajax({
+            type: "PUT",
+            url: 'api/CMF_London2Data/Edit/' + rowID,
+            data: {
+                "propertyName": propertyName,
+                "propertyValue": propertyValue
+            },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                console.log("success");
+            }
+        });
+    });
+}
+
+function updateSingaporeTableChangeEventListener() {
+    $('#CMF_Singapore_TableBody td').on('change', function (evt, newValue) {
+        var rowID = $(this).siblings()[0].innerHTML;
+        var propertyValue = newValue;
+        var propertyName = $(this).closest('table').find('th').eq($(this).index())[0].innerHTML;
+
+        switch (propertyName.toLowerCase()) {
+            case "o/n":
+                propertyName = "oN_Repo";
+                break;
+            case "1m":
+                propertyName = "oneMonth_Fixed";
+                break;
+            case "2m":
+                propertyName = "twoMonth_Fixed";
+                break;
+            case "3m":
+                propertyName = "threeMonth_Fixed";
+                break;
+            case "4m":
+                propertyName = "fourMonth_Fixed";
+                break;
+            case "5m":
+                propertyName = "fiveMonth_Fixed";
+                break;
+            case "6m":
+                propertyName = "sixMonth_Fixed";
+                break;
+            default:
+                break;
+        }
+
+        //console.log(rowID + " " + propertyName + " " + propertyValue);
+
+        //update db
+        $.ajax({
+            type: "PUT",
+            url: 'api/CMF_SingaporeData/Edit/' + rowID,
+            data: {
+                "propertyName": propertyName,
+                "propertyValue": propertyValue
+            },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                console.log("success");
+            }
+        });
+    });
 }
 
 function addContactCellChangeListener(uniqueId) {
@@ -1374,6 +1394,8 @@ function ins_toronto_row() {
             //add table widget 
             addEditableTableWidget("CMF_Toronto_TableBody");
 
+            updateTorontoTableChangeEventListener();
+
             initHub();
             hubInsRow("table", "toronto", data.id);
 
@@ -1426,6 +1448,8 @@ function ins_toronto_contact_row() {
 
             //add table widget 
             addEditableTableWidget("CMF_Toronto_FooterContacts");
+
+            addContactCellChangeListener("CMF_Toronto_FooterContacts");
 
             initHub();
             hubInsRow("contact", "toronto", data.id);
@@ -1519,6 +1543,8 @@ function ins_newyork_row() {
             //add table widget 
             addEditableTableWidget("CMF_NewYork_TableBody");
 
+            updateNewYorkTableChangeEventListener();
+
             initHub();
             hubInsRow("table", "newyork", data.id);
 
@@ -1571,6 +1597,8 @@ function ins_newyork_contact_row() {
 
             //add table widget 
             addEditableTableWidget("CMF_NewYork_FooterContacts");
+
+            addContactCellChangeListener("CMF_NewYork_FooterContacts");
 
             initHub();
             hubInsRow("contact", "newyork", item.id);
@@ -1644,6 +1672,8 @@ function ins_london1_row() {
             //add table widget 
             addEditableTableWidget("CMF_London1_TableBody");
 
+            updateLondon1TableChangeEventListener()
+
             initHub();
             hubInsRow("table", "london1", item.id);
 
@@ -1716,6 +1746,8 @@ function ins_london2_row() {
             //add table widget 
             addEditableTableWidget("CMF_London2_TableBody");
 
+            updateLondon2TableChangeEventListener();
+
             initHub();
             hubInsRow("table", "london2", item.id);
 
@@ -1768,6 +1800,8 @@ function ins_london_contact_row() {
 
             //add table widget 
             addEditableTableWidget("CMF_London_FooterContacts");
+
+            addContactCellChangeListener("CMF_London_FooterContacts");
 
             initHub();
             hubInsRow("contact", "london", item.id);
@@ -1851,6 +1885,8 @@ function ins_singapore_row() {
             //add table widget 
             addEditableTableWidget("CMF_Singapore_TableBody");
 
+            updateSingaporeTableChangeEventListener();
+
             initHub();
             hubInsRow("table", "singapore", item.id);
 
@@ -1903,6 +1939,8 @@ function ins_singapore_contact_row() {
 
             //add table widget 
             addEditableTableWidget("CMF_Singapore_FooterContacts");
+
+            addContactCellChangeListener("CMF_Singapore_FooterContacts");
 
             initHub();
             hubInsRow("contact", "singapore", item.id);
