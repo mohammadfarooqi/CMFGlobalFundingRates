@@ -1,17 +1,19 @@
-﻿$(document).ready(function () {
+﻿var sitePrefix = 'cmf_gfr/';
+
+$(document).ready(function () {
     //load up json data from server using web api
-    initializeTorontoTable('api/CMF_TorontoData');
-    initializeTorontoTableContacts('api/CMF_ContactsData/Toronto');
+    initializeTorontoTable(sitePrefix + 'api/CMF_TorontoData');
+    initializeTorontoTableContacts(sitePrefix + 'api/CMF_ContactsData/Toronto');
 
-    initializeNewYorkTable('api/CMF_NewYorkData');
-    initializeNewYorkTableContacts('api/CMF_ContactsData/NewYork');
+    initializeNewYorkTable(sitePrefix + 'api/CMF_NewYorkData');
+    initializeNewYorkTableContacts(sitePrefix + 'api/CMF_ContactsData/NewYork');
 
-    initializeLondon1Table('api/CMF_London1Data');
-    initializeLondon2Table('api/CMF_London2Data');
-    initializeLondonTableContacts('api/CMF_ContactsData/London');
+    initializeLondon1Table(sitePrefix + 'api/CMF_London1Data');
+    initializeLondon2Table(sitePrefix + 'api/CMF_London2Data');
+    initializeLondonTableContacts(sitePrefix + 'api/CMF_ContactsData/London');
 
-    initializeSingaporeTable('api/CMF_SingaporeData');
-    initializeSingaporeTableContacts('api/CMF_ContactsData/Singapore');
+    initializeSingaporeTable(sitePrefix + 'api/CMF_SingaporeData');
+    initializeSingaporeTableContacts(sitePrefix + 'api/CMF_ContactsData/Singapore');
 
     updatesUnique = $.connection.liveUpdates;
     
@@ -43,7 +45,7 @@
                 case "toronto":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_TorontoData/' + iD,
+                        url: sitePrefix + 'api/CMF_TorontoData/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (data) {
@@ -100,7 +102,7 @@
                 case "newyork":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_NewYorkData/' + iD,
+                        url: sitePrefix + 'api/CMF_NewYorkData/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (data) {
@@ -173,7 +175,7 @@
                 case "london1":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_London1Data/' + iD,
+                        url: sitePrefix + 'api/CMF_London1Data/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (item) {
@@ -230,7 +232,7 @@
                 case "london2":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_London2Data/' + iD,
+                        url: sitePrefix + 'api/CMF_London2Data/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (item) {
@@ -287,7 +289,7 @@
                 case "singapore":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_SingaporeData/' + iD,
+                        url: sitePrefix + 'api/CMF_SingaporeData/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (item) {
@@ -356,7 +358,7 @@
                 case "toronto":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_ContactsData/Toronto/' + iD,
+                        url: sitePrefix + 'api/CMF_ContactsData/Toronto/' + iD,
                         data: { },
                         dataType: "json",
                         success: function (data) {
@@ -399,7 +401,7 @@
                 case "newyork":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_ContactsData/NewYork/' + iD,
+                        url: sitePrefix + 'api/CMF_ContactsData/NewYork/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (item) {
@@ -440,7 +442,7 @@
                 case "london":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_ContactsData/London/' + iD,
+                        url: sitePrefix + 'api/CMF_ContactsData/London/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (item) {
@@ -481,7 +483,7 @@
                 case "singapore":
                     $.ajax({
                         type: "GET",
-                        url: 'api/CMF_ContactsData/Singapore/' + iD,
+                        url: sitePrefix + 'api/CMF_ContactsData/Singapore/' + iD,
                         data: {},
                         dataType: "json",
                         success: function (item) {
@@ -1052,7 +1054,7 @@ function updateTorontoTableChangeEventListener() {
         //update db
         $.ajax({
             type: "PUT",
-            url: 'api/CMF_TorontoData/Edit/' + rowID,
+            url: sitePrefix + 'api/CMF_TorontoData/Edit/' + rowID,
             data: {
                 "propertyName": propertyName,
                 "propertyValue": propertyValue
@@ -1120,7 +1122,7 @@ function updateNewYorkTableChangeEventListener() {
         //update db
         $.ajax({
             type: "PUT",
-            url: 'api/CMF_NewYorkData/Edit/' + rowID,
+            url: sitePrefix + 'api/CMF_NewYorkData/Edit/' + rowID,
             data: {
                 "propertyName": propertyName,
                 "propertyValue": propertyValue
@@ -1166,7 +1168,7 @@ function updateLondon1TableChangeEventListener() {
         //update db
         $.ajax({
             type: "PUT",
-            url: 'api/CMF_London1Data/Edit/' + rowID,
+            url: sitePrefix + 'api/CMF_London1Data/Edit/' + rowID,
             data: {
                 "propertyName": propertyName,
                 "propertyValue": propertyValue
@@ -1228,7 +1230,7 @@ function updateLondon2TableChangeEventListener() {
         //update db
         $.ajax({
             type: "PUT",
-            url: 'api/CMF_London2Data/Edit/' + rowID,
+            url: sitePrefix + 'api/CMF_London2Data/Edit/' + rowID,
             data: {
                 "propertyName": propertyName,
                 "propertyValue": propertyValue
@@ -1279,7 +1281,7 @@ function updateSingaporeTableChangeEventListener() {
         //update db
         $.ajax({
             type: "PUT",
-            url: 'api/CMF_SingaporeData/Edit/' + rowID,
+            url: sitePrefix + 'api/CMF_SingaporeData/Edit/' + rowID,
             data: {
                 "propertyName": propertyName,
                 "propertyValue": propertyValue
@@ -1317,7 +1319,7 @@ function addContactCellChangeListener(uniqueId) {
         //update db
         $.ajax({
             type: "PUT",
-            url: 'api/CMF_ContactsData/Edit/' + rowID,
+            url: sitePrefix + 'api/CMF_ContactsData/Edit/' + rowID,
             data: {
                 "propertyName": propertyName,
                 "propertyValue": propertyValue
@@ -1339,7 +1341,7 @@ function ins_toronto_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_TorontoData/Add',
+        url: sitePrefix + 'api/CMF_TorontoData/Add',
         data: {
             "currency": $("#ins_toronto_currency").val(),
             "product": $("#ins_toronto_product").val(),
@@ -1413,7 +1415,7 @@ function ins_toronto_contact_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_ContactsData/Add',
+        url: sitePrefix + 'api/CMF_ContactsData/Add',
         data: {
             "name": $("#ins_toronto_contact_contact").val(),
             "phone": $("#ins_toronto_contact_phone").val(),
@@ -1468,7 +1470,7 @@ function ins_newyork_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_NewYorkData/Add',
+        url: sitePrefix + 'api/CMF_NewYorkData/Add',
         data: {
             "currency": $("#ins_newyork_currency").val(),
             "product": $("#ins_newyork_product").val(),
@@ -1562,7 +1564,7 @@ function ins_newyork_contact_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_ContactsData/Add',
+        url: sitePrefix + 'api/CMF_ContactsData/Add',
         data: {
             "name": $("#ins_newyork_contact_contact").val(),
             "phone": $("#ins_newyork_contact_phone").val(),
@@ -1617,7 +1619,7 @@ function ins_london1_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_London1Data/Add',
+        url: sitePrefix + 'api/CMF_London1Data/Add',
         data: {
             "currency": $("#ins_london1_currency").val(),
             "product": $("#ins_london1_product").val(),
@@ -1691,7 +1693,7 @@ function ins_london2_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_London2Data/Add',
+        url: sitePrefix + 'api/CMF_London2Data/Add',
         data: {
             "currency": $("#ins_london2_currency").val(),
             "product": $("#ins_london2_product").val(),
@@ -1765,7 +1767,7 @@ function ins_london_contact_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_ContactsData/Add',
+        url: sitePrefix + 'api/CMF_ContactsData/Add',
         data: {
             "name": $("#ins_london_contact_contact").val(),
             "phone": $("#ins_london_contact_phone").val(),
@@ -1820,7 +1822,7 @@ function ins_singapore_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_SingaporeData/Add',
+        url: sitePrefix + 'api/CMF_SingaporeData/Add',
         data: {
             "currency": $("#ins_singapore_currency").val(),
             "product": $("#ins_singapore_product").val(),
@@ -1904,7 +1906,7 @@ function ins_singapore_contact_row() {
     //ins row
     $.ajax({
         type: "POST",
-        url: 'api/CMF_ContactsData/Add',
+        url: sitePrefix + 'api/CMF_ContactsData/Add',
         data: {
             "name": $("#ins_singapore_contact_contact").val(),
             "phone": $("#ins_singapore_contact_phone").val(),
@@ -2009,19 +2011,19 @@ function deleteRowOnClickListener() {
 
         if (tableClickedID.toLowerCase().indexOf("table") >= 0) {
             if (tableClickedID.toLowerCase().indexOf("toronto") >= 0) {
-                url = 'api/CMF_TorontoData/' + rowID;
+                url = sitePrefix + 'api/CMF_TorontoData/' + rowID;
             }
             else if (tableClickedID.toLowerCase().indexOf("newyork") >= 0) {
-                url = 'api/CMF_NewYorkData/' + rowID;
+                url = sitePrefix + 'api/CMF_NewYorkData/' + rowID;
             }
             else if (tableClickedID.toLowerCase().indexOf("london1") >= 0) {
-                url = 'api/CMF_London1Data/' + rowID;
+                url = sitePrefix + 'api/CMF_London1Data/' + rowID;
             }
             else if (tableClickedID.toLowerCase().indexOf("london2") >= 0) {
-                url = 'api/CMF_London2Data/' + rowID;
+                url = sitePrefix + 'api/CMF_London2Data/' + rowID;
             }
             else if (tableClickedID.toLowerCase().indexOf("singapore") >= 0) {
-                url = 'api/CMF_SingaporeData/' + rowID;
+                url = sitePrefix + 'api/CMF_SingaporeData/' + rowID;
             }
         }
         else if (tableClickedID.toLowerCase().indexOf("contact") >= 0) {
@@ -2038,7 +2040,7 @@ function deleteRowOnClickListener() {
 
             //}
 
-            url = 'api/CMF_ContactsData/' + rowID;
+            url = sitePrefix + 'api/CMF_ContactsData/' + rowID;
         }
 
         $.ajax({
