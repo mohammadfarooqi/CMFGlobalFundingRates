@@ -1,6 +1,24 @@
-﻿var sitePrefix = 'cmf_gfr/';
+﻿var sitePrefix = 'cmf_gfr/';    //live environment
+//var sitePrefix = '';            //dev environment
 
 $(document).ready(function () {
+    var tempArray = new Array();
+
+    $(document).ajaxComplete(function (event, request, settings) {
+        console.log(settings.url);
+        if (settings.url == sitePrefix + 'api/CMF_TorontoData' || settings.url == sitePrefix + 'api/CMF_ContactsData/Toronto'
+            || settings.url == sitePrefix + 'api/CMF_NewYorkData' || settings.url == sitePrefix + 'api/CMF_ContactsData/NewYork'
+            || settings.url == sitePrefix + 'api/CMF_London1Data' || settings.url == sitePrefix + 'api/CMF_London2Data' || settings.url == sitePrefix + 'api/CMF_ContactsData/London'
+            || settings.url == sitePrefix + 'api/CMF_SingaporeData' || settings.url == sitePrefix + 'api/CMF_ContactsData/Singapore') {
+            if (tempArray.length == 8) {
+                $("#initalLoader").css("display", "none");
+            }
+            else if (tempArray.length < 9) {
+                tempArray.push(settings.url);
+            }
+        }
+    });
+
     //load up json data from server using web api
     initializeTorontoTable(sitePrefix + 'api/CMF_TorontoData');
     initializeTorontoTableContacts(sitePrefix + 'api/CMF_ContactsData/Toronto');
@@ -2009,54 +2027,48 @@ function deleteRowOnClickListener() {
         var url = "";
         var trToRemove = $(this).parent().parent();
 
-        if (tableClickedID.toLowerCase().indexOf("table") >= 0) {
-            if (tableClickedID.toLowerCase().indexOf("toronto") >= 0) {
-                url = sitePrefix + 'api/CMF_TorontoData/' + rowID;
+        if (window.confirm('Are you sure you want to delete this row?')) {
+            //var rowID = $($(this).parent().siblings()[0]).text();
+            //var tableClickedID = $(this).parent().parent().parent().attr("id");
+            //var url = "";
+            //var trToRemove = $(this).parent().parent();
+
+            if (tableClickedID.toLowerCase().indexOf("table") >= 0) {
+                if (tableClickedID.toLowerCase().indexOf("toronto") >= 0) {
+                    url = sitePrefix + 'api/CMF_TorontoData/' + rowID;
+                }
+                else if (tableClickedID.toLowerCase().indexOf("newyork") >= 0) {
+                    url = sitePrefix + 'api/CMF_NewYorkData/' + rowID;
+                }
+                else if (tableClickedID.toLowerCase().indexOf("london1") >= 0) {
+                    url = sitePrefix + 'api/CMF_London1Data/' + rowID;
+                }
+                else if (tableClickedID.toLowerCase().indexOf("london2") >= 0) {
+                    url = sitePrefix + 'api/CMF_London2Data/' + rowID;
+                }
+                else if (tableClickedID.toLowerCase().indexOf("singapore") >= 0) {
+                    url = sitePrefix + 'api/CMF_SingaporeData/' + rowID;
+                }
             }
-            else if (tableClickedID.toLowerCase().indexOf("newyork") >= 0) {
-                url = sitePrefix + 'api/CMF_NewYorkData/' + rowID;
+            else if (tableClickedID.toLowerCase().indexOf("contact") >= 0) {
+                url = sitePrefix + 'api/CMF_ContactsData/' + rowID;
             }
-            else if (tableClickedID.toLowerCase().indexOf("london1") >= 0) {
-                url = sitePrefix + 'api/CMF_London1Data/' + rowID;
-            }
-            else if (tableClickedID.toLowerCase().indexOf("london2") >= 0) {
-                url = sitePrefix + 'api/CMF_London2Data/' + rowID;
-            }
-            else if (tableClickedID.toLowerCase().indexOf("singapore") >= 0) {
-                url = sitePrefix + 'api/CMF_SingaporeData/' + rowID;
-            }
+
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+
+            var classname = trToRemove.attr("class");
+
+            updatesUnique.server.sendDeleteAlert("." + classname + " .hidden", rowID);
+
+            trToRemove.remove();
         }
-        else if (tableClickedID.toLowerCase().indexOf("contact") >= 0) {
-            //if (tableClickedID.toLowerCase().indexOf("toronto") >= 0) {
-
-            //}
-            //else if (tableClickedID.toLowerCase().indexOf("newyork") >= 0) {
-
-            //}
-            //else if (tableClickedID.toLowerCase().indexOf("london") >= 0) {
-
-            //}
-            //else if (tableClickedID.toLowerCase().indexOf("singapore") >= 0) {
-
-            //}
-
-            url = sitePrefix + 'api/CMF_ContactsData/' + rowID;
-        }
-
-        $.ajax({
-            type: "DELETE",
-            url: url,
-            data: {},
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-            }
-        });
-
-        var classname = trToRemove.attr("class");
-
-        updatesUnique.server.sendDeleteAlert("." + classname + " .hidden", rowID);
-
-        trToRemove.remove();
     });
 }
